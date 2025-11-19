@@ -1,9 +1,6 @@
 # API Specification – Leave Scheduler
 
-## Overview
-
-This document defines the core backend API endpoints for the Leave Scheduler MVP.
-All authenticated routes require a valid JWT token (if using Node) or Firebase session token.
+This document defines the backend API endpoints the Leave Scheduler app will communicate with. It covers authentication, user management, leave operations, policies, and reporting.
 
 ---
 
@@ -11,115 +8,163 @@ All authenticated routes require a valid JWT token (if using Node) or Firebase s
 
 ## POST /auth/register
 
-Registers a new user.
-
-### Request Body
+**Description:** Create a new user account
+**Request Body:**
 
 ```
 {
   "name": "John Doe",
-  "email": "john@example.com",
-  "password": "123456",
+  "email": "john@company.com",
+  "password": "secret123",
   "role": "employee"
 }
 ```
 
-### Responses
+**Response:**
 
-* **201 Created** – User registered successfully
-* **409 Conflict** – Email already exists
+```
+{
+  "message": "Account created successfully"
+}
+```
 
 ---
 
 ## POST /auth/login
 
-Authenticates user and returns token.
-
-### Request Body
+**Description:** Logs in a user
+**Request Body:**
 
 ```
 {
-  "email": "john@example.com",
-  "password": "123456"
+  "email": "john@company.com",
+  "password": "secret123"
 }
 ```
 
-### Responses
-
-* **200 OK** – Returns auth token
-* **401 Unauthorized** – Invalid credentials
-
----
-
-# 2. Users
-
-## GET /users/:id
-
-Returns basic user profile details.
-
-### Response Example
+**Response:**
 
 ```
 {
-  "id": "abc123",
-  "name": "John Doe",
-  "email": "john@example.com",
-  "role": "employee",
-  "leaveBalances": {
-    "annual": 12,
-    "sick": 5
+  "token": "jwt_access_token",
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@company.com",
+    "role": "employee"
   }
 }
 ```
 
 ---
 
-# 3. Leave Requests
+## GET /auth/me
 
-## GET /leave-requests
-
-Returns leave requests for current user.
-
-### Query Parameters (optional)
-
-* `status=pending`
-* `type=annual`
-* `department=Engineering`
-
-### Responses
-
-* **200 OK** – Array of requests
-
----
-
-## POST /leave-requests
-
-Creates a new leave request.
-
-### Request Body
+**Auth Required:** Yes
+**Description:** Returns current logged-in user
+**Response:**
 
 ```
 {
-  "startDate": "2025-08-01",
-  "endDate": "2025-08-02",
-  "type": "annual",
-  "reason": "Holiday trip"
+  "id": 1,
+  "name": "John Doe",
+  "email": "john@company.com",
+  "role": "employee"
 }
 ```
 
-### Responses
+---
 
-* **201 Created** – Returns created request
-* **400 Bad Request** – Validation error
-* **403 Forbidden** – Not enough remaining leave days
+# 2. User Management
+
+## GET /users
+
+**Role:** Admin
+**Description:** Returns all users
+
+## GET /users/:id
+
+**Description:** Returns a single user profile
+
+## PUT /users/:id
+
+**Description:** Update user details
+Example body:
+
+```
+{
+  "name": "New Name",
+  "role": "manager"
+}
+```
+
+## DELETE /users/:id
+
+**Description:** Delete a user account
 
 ---
 
-## PATCH /leave-requests/:id/approve
+# 3. Leave Requests
 
-Marks a request as approved (Manager only).
+## POST /leave
 
-### Request Body (optional)
+**Description:** Submit a leave request
+**Request Body:**
+
+```
+{
+  "type": "Annual",
+  "startDate": "2025-03-05",
+  "endDate": "2025-03-07",
+  "reason": "Family trip"
+}
+```
+
+**Response:**
+
+```
+{
+  "message": "Leave request submitted"
+}
+```
+
+---
+
+## GET /leave
+
+**Description:** Returns leave requests for:
+
+* The logged-in user (if employee)
+* Their team (if manager)
+* Entire company (if admin)
+
+---
+
+## GET /leave/:id
+
+**Description:** Return a single leave request
+
+---
+
+## PUT /leave/:id
+
+**Description:** Update a leave request
+(Allowed before approval)
+
+---
+
+## DELETE /leave/:id
+
+**Description:** Cancel a leave request
+
+---
+
+# 4. Leave Approval
+
+## POST /leave/:id/approve
+
+**Role:** Manager or Admin
+**Request Body:**
 
 ```
 {
@@ -127,86 +172,175 @@ Marks a request as approved (Manager only).
 }
 ```
 
-### Responses
-
-* **200 OK**
-* **403 Forbidden** – Not a manager
-
----
-
-## PATCH /leave-requests/:id/reject
-
-Marks a request as rejected (Manager only).
-
-### Request Body (optional)
+**Response:**
 
 ```
 {
-  "comment": "We have a deadline next week."
+  "message": "Leave approved"
 }
 ```
 
-### Responses
+---
 
-* **200 OK**
-* **403 Forbidden**
+## POST /leave/:id/reject
+
+**Role:** Manager or Admin
+**Request Body:**
+
+```
+{
+  "comment": "We have deadlines this week"
+}
+```
+
+**Response:**
+
+```
+{
+  "message": "Leave rejected"
+}
+```
 
 ---
 
-# 4. Calendar
+# 5. Leave Balances
 
-## GET /calendar
+## GET /leave-balance
 
-Returns approved leave in a date range.
+**Description:** Returns leave balances for current user
 
-### Query Parameters
-
-* `from=2025-08-01`
-* `to=2025-08-31`
-
-### Response Example
+Response example:
 
 ```
-[
-  {
-    "employeeId": "abc123",
-    "startDate": "2025-08-01",
-    "endDate": "2025-08-02"
+{
+  "annual": 12,
+  "sick": 6,
+  "unpaid": "Unlimited"
+}
+```
+
+---
+
+## PUT /leave-balance/:id
+
+**Role:** Admin
+**Description:** Adjust leave balances manually
+
+```
+{
+  "annual": 15
+}
+```
+
+---
+
+# 6. Policies
+
+## GET /policies
+
+**Description:** Return all leave policies
+
+## PUT /policies
+
+**Role:** Admin
+**Description:** Update leave rules
+
+Example:
+
+```
+{
+  "annual": {
+    "maxDays": 20,
+    "accrualRate": 1.5
   }
-]
+}
 ```
 
 ---
 
-# 5. Admin Controls
+# 7. Reports
 
-## PATCH /admin/users/:id/leave-balance
+## GET /reports/company
 
-Adjust leave balances.
+**Role:** Admin
+**Description:** Company-wide leave stats
 
-### Request Body
+## GET /reports/department/:deptId
+
+**Role:** Manager/Admin
+**Description:** Return stats for a single department
+
+Example response:
 
 ```
 {
-  "annual": 15,
-  "sick": 3
+  "month": "March",
+  "requests": 32,
+  "approved": 26,
+  "rejected": 6
 }
 ```
-
-### Responses
-
-* **200 OK**
-* **403 Forbidden** – Not admin
 
 ---
 
-## Notes
-
-* All responses follow JSON format.
-* Errors returned as:
+# 8. Common Error Responses
 
 ```
 {
-  "error": "Description here"
+  "error": "Unauthorized"
 }
 ```
+
+```
+{
+  "error": "Access denied"
+}
+```
+
+```
+{
+  "error": "Validation failed",
+  "details": [...]
+}
+```
+
+---
+
+# 9. Authentication Model
+
+All protected endpoints require:
+
+```
+Authorization: Bearer <token>
+```
+
+Token returned from:
+
+* POST /auth/login
+
+---
+
+# 10. API Status Codes
+
+* `200` – Success
+* `201` – Created
+* `400` – Invalid request
+* `401` – Not authenticated
+* `403` – No permission
+* `404` – Not found
+* `500` – Server error
+
+---
+
+# Final Notes
+
+Backend can be implemented with:
+
+* Node.js + Express
+* Django REST Framework
+* Laravel API
+* Go Fiber
+* Spring Boot
+* etc.
+
+This spec is designed so the frontend can start development even while the backend is in progress.
