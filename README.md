@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# Leave Scheduler – MVP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based web application for managing employee leave requests, approvals, and balances.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+* Employee dashboard (submit & view requests)
+* Manager dashboard (approve/reject)
+* Leave balance tracking
+* Calendar of approved leave
+* Basic authentication
+* Admin adjustment of balances
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧠 Tech Stack
 
-### `npm test`
+### Frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* React + Vite
+* React Router
+* Tailwind CSS
+* Context API (state)
+* Axios (API calls)
 
-### `npm run build`
+### Backend Options
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Node + Express + MongoDB
+  OR
+* Firebase (Auth + Firestore)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📦 Getting Started
 
-### `npm run eject`
+### 1. Clone
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+git clone https://github.com/yourname/leave-scheduler.git
+cd leave-scheduler
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Install dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Start local dev server
 
-## Learn More
+```
+npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. Build for production
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm run build
+```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🧪 Testing
 
-### Analyzing the Bundle Size
+* Jest + React Testing Library (unit)
+* Cypress/Playwright (optional E2E)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Run tests:
 
-### Making a Progressive Web App
+```
+npm run test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🌐 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Recommended platforms:
 
-### Deployment
+* **Frontend:** Vercel / Netlify
+* **Backend:** Railway / Render / Firebase Hosting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+GitHub Actions recommended for CI (install + run build).
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📁 Project Structure (Example)
+
+```
+src
+ ├── components
+ ├── pages
+ ├── context
+ ├── hooks
+ ├── services
+ ├── styles
+ └── utils
+```
+
+---
+
+## 📘 Documentation
+
+See:
+
+* `MVP-SPEC.md`
+* `user_stories.md`
+* `data_model.md`
+* `api_spec.md`
+
+---
+
+## 🧠 Future Enhancements
+
+* Multi-level approval
+* Email notifications
+* Public holiday integration
+* Analytics dashboards
+
+---
+
+## 📜 License
+
+MIT License.
