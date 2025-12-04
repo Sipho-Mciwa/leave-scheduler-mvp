@@ -1,0 +1,149 @@
+.loginContainer {
+    justify-content: center;
+    font-family: sans-serif;
+    padding-top: 50px;
+}
+
+.loginForm {
+    border: none;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+form {
+    display: block;
+}
+
+input {
+    width: 89%;
+    height: 35px;
+    border: 1px solid slategray;
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 28px;
+    margin: 15px 0;
+}
+
+input:focus {
+    border-color: #3F51B5;
+}
+
+.signInBtn {
+    background-color: #533df6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 98%;
+    height: 35px;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.signInBtn:hover {
+    background-color: #6d5bf7;
+    cursor: pointer;
+}
+
+.loginHeader, .loginFooter {
+    justify-content: center;
+    text-align: center;
+}
+
+.calenderIcon {
+    display: inline-flex;
+    justify-content: center;
+    background-color: #533df6;
+    width: 56px;
+    height: 56px;
+    border-radius: 15px;
+}
+
+.cal-icon {
+    color: white;
+    width: 28px;
+    height: 28px;
+    padding: 12px;
+}
+
+.inputIcon .lock-icon{
+    position: absolute;
+    z-index: 1;
+    padding-top: 30px;
+    padding-left: 7px;
+}
+
+.inputIcon .mail-icon{
+    position: absolute;
+    z-index: 1;
+    padding-top: 31px;
+    padding-left: 7px;
+}
+
+.mail-icon, .lock-icon {
+    height: 15px;
+    width: 15px;
+    color: gray;
+    cursor: none;
+}
+
+label {
+    color: grey;
+}
+
+.input-div {
+    padding: 10px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.drawerFooter {
+    font-family: sans-serif;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.userAvatar {
+    display: flex;
+    justify-content: start;
+    /* text-align: center; */
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+}
+
+.role {
+    padding-left: 5px;
+    font-size: small;
+    font-weight: lighter;
+}
+
+.logout {
+    display: flex;
+    padding-left: 10px;
+}
+
+.avatarIcon {
+    margin-top: 10px;
+}
+
+.linkBtn {
+    color: white;
+}
+
+/* .linkBtn:hover {
+    color: #3F51B5;
+    border: 1px solid black;
+} */
