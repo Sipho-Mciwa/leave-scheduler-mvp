@@ -12,14 +12,14 @@
     margin: auto;
     padding: 25px;
     background-color: white;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 form {
     display: block;
 }
 
-input {
+.login-input {
     width: 89%;
     height: 35px;
     border: 1px solid slategray;
@@ -96,7 +96,7 @@ label {
 }
 
 .input-div {
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 a {
@@ -143,7 +143,224 @@ a {
     color: white;
 }
 
-/* .linkBtn:hover {
-    color: #3F51B5;
-    border: 1px solid black;
-} */
+.addInfo {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin-top: 82px;
+    margin-left: 20px;
+}
+
+.guideLinesInfo {
+    border: 1px solid #fae78a;
+    background-color: #fbfbed;
+    color: #bf6a20;
+    padding: 20px;
+}
+
+.leaveBalanceInfo {
+    background-color: white;
+    padding: 10px 25px 25px 25px;
+    
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.leaveBalanceInfo, .guideLinesInfo {
+    border-radius: 10px;
+    padding-left: 15px;
+    margin-bottom: 20px; 
+}
+
+.formContainer{
+    border: none;
+    border-radius: 10px;
+    padding: 25px;
+    background-color: white;
+    width: 450px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.apply-for-leave-container {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.leave-type-dropdown {
+    width: 100%;
+    height: 35px;
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    padding-right: 28px;
+    margin: 15px 0;
+    height: 45px;
+}
+
+.dateInput {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reason-textarea {
+    width: 96%;
+    height: 135px;
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 8px;
+    margin: 10px 0;
+    font-family: sans-serif;
+    resize: none;
+}
+
+.submit-cancel-btns {
+    display: flex;
+}
+
+.submitBtn, .cancelBtn {
+    border: none;
+    border-radius: 8px;
+    height: 35px;
+    padding: 5px;
+    margin-top: 15px;
+    height: 45px;
+}
+
+.submitBtn {
+    background-color: #533df6;
+    color: white;
+    width: 78%;
+    margin-right: 15px;
+}
+
+.submitBtn:hover {
+    background-color: #6d5bf7;
+    cursor: pointer;
+}
+
+
+.cancelBtn {
+    border: 2px solid rgb(221, 221, 221);
+    color: black;
+    background-color: white;
+    width: 22%;
+}
+
+.date-input {
+    width: 91%;
+    height: 35px;
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 8px;
+    margin: 10px 0;
+    font-family: sans-serif;
+}
+
+.supporting-doc {
+    width: 96%;
+    height: 135px;
+    border: 2px dotted rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 8px;
+    margin: 10px 0;
+    font-family: sans-serif;
+}
+
+.balance-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 15px 20px 10px;
+}
+
+.leave-type {
+    color: grey;
+}
+
+.guideLinesInfoHeader {
+    display: flex;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+.dash-cal-icon {
+    display: inline-flex;
+    justify-content: center;
+    background-color: rgb(71, 71, 252);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.dash-check-icon {
+    display: inline-flex;
+    justify-content: center;
+    background-color: rgb(11, 218, 11);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.dash-clock-icon {
+    display: inline-flex;
+    justify-content: center;
+    background-color: orange;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.dash-up-icon {
+    display: inline-flex;
+    justify-content: center;
+    background-color: #5f4cf3d8;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.dash-icon {
+    height: 20px;
+    color: white;
+    padding-top: 9px;
+}
+
+.view-requests-btn {
+    width: 100%;
+    background-color: white;
+    color: #533df6;
+    border: 1px solid #533df6;
+    border-radius: 8px;
+    width: 98%;
+    height: 35px;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.view-requests-btn:hover {
+    background-color: #6d5bf7;
+    cursor: pointer;
+    color: white;
+}
+
+.errorMsg {
+    color: red;
+    font-size: small;
+    margin: 0;
+    z-index: 10;
+}
+
+.error-input {
+    width: 89%;
+    height: 35px;
+    border: 2px solid red;
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 28px;
+    margin: 15px 0;
+}

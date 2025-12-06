@@ -88,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Navbar({children}) {
+export default function Navbar({children, user}) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -144,7 +144,7 @@ export default function Navbar({children}) {
                         <div className='userAvatar'>
                             <Avatar className='avatarIcon'/>
                             <div className='userDetails'>
-                                <Typography variant='h6'>Sipho Mciwa<br/><span className='role'>Employee</span></Typography>
+                                <Typography variant='h6'>{user.name}<br/><span className='role'>{user.role}</span></Typography>
                             </div>
                         </div>
                         <div className='logout'>

@@ -5,13 +5,14 @@ import Login from "./pages/Login/Login";
 import { useState } from "react";
 
 function App() {
-  const [signedIn, setSignedIn] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [user, setUser] = useState(null);
   return (
     <BrowserRouter>
-      {signedIn ? <Navbar> 
-        <AppRouters signedIn={signedIn}/> 
+      {submitted ? <Navbar user={user}> 
+        <AppRouters submitted={submitted} user={user}/> 
         </Navbar> 
-      : <Login setSignedIn={setSignedIn}/>}
+      : <Login setSubmitted={setSubmitted} setUser={setUser}/>}
     </BrowserRouter>
   );
 }

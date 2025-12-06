@@ -7,11 +7,11 @@ import AdminPolicy from "../pages/Admin/AdminPolicy";
 import Calendar from "../pages/Calendar";
 
 
-export default function AppRouters({signedIn}) {
+export default function AppRouters({signedIn, user}) {
     return (<Routes>
         <Route path="/" element={( signedIn && <Navigate to="/dashboard" />)}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/apply-leave" element={<ApplyLeave/>}/>
+        <Route path="/dashboard" element={<Dashboard user={user}/>}/>
+        <Route path="/apply-leave" element={<ApplyLeave user={user}/>}/>
         <Route path="/my-requests" element={<MyRequests/>}/>
         <Route path="/pending-requests" element={<PendingRequests/>}/>
         <Route path="/calendar" element={<Calendar/>}/>
