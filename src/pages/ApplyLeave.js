@@ -4,7 +4,7 @@ import { Info } from "lucide-react";
 import { getBalance } from "../services/api";
 import { useEffect, useState } from "react";
 
-export default function ApplyLeave({user}) {
+export default function ApplyLeave() {
     const [leaveBalance, setLeaveBalance] = useState(null)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function ApplyLeave({user}) {
         handleOnLoad();
     }, [])
 
-    console.log(leaveBalance)
+    
 
     return (
     <div className="apply-for-leave-container" >

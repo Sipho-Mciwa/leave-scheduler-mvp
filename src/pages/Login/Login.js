@@ -60,7 +60,7 @@ export default function Login({setSubmitted, setUser}) {
         }
     };
 
-    const isFormValid = Object.keys(errors).length === 0
+    const isFormValid = Object.keys(errors).length === 0;
 
     return (
     <div className="loginContainer">

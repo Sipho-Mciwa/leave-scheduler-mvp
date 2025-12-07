@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import DashboardGrid from "../components/dashboardGrid";
-import { getMonthAndYear } from "../utils/dateUtils";
+import { getMonthAndYear } from "../utils/Utils";
 
 export default function Dashboard({user}) {
     const userName = user.name.split(' ');

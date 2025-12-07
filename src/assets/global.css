@@ -197,6 +197,17 @@ a {
     height: 45px;
 }
 
+.error-leave-type-dropdown {
+    width: 100%;
+    height: 35px;
+    border: 2px solid rgb(255, 0, 0);
+    border-radius: 8px;
+    padding: 5px;
+    padding-right: 28px;
+    margin: 15px 0;
+    height: 45px;
+}
+
 .dateInput {
     display: flex;
     justify-content: space-between;
@@ -206,6 +217,18 @@ a {
     width: 96%;
     height: 135px;
     border: 2px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 8px;
+    margin: 10px 0;
+    font-family: sans-serif;
+    resize: none;
+}
+
+.error-reason-textarea {
+    width: 96%;
+    height: 135px;
+    border: 2px solid rgb(255, 0, 0);
     border-radius: 8px;
     padding: 5px;
     padding-left: 8px;
@@ -234,6 +257,14 @@ a {
     margin-right: 15px;
 }
 
+/* .error-submitBtn {
+    background-color: #a196f1;
+    color: white;
+    width: 78%;
+    margin-right: 15px;
+    cursor: not-allowed;
+} */
+
 .submitBtn:hover {
     background-color: #6d5bf7;
     cursor: pointer;
@@ -251,6 +282,17 @@ a {
     width: 91%;
     height: 35px;
     border: 2px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 8px;
+    margin: 10px 0;
+    font-family: sans-serif;
+}
+
+.error-date-input {
+    width: 91%;
+    height: 35px;
+    border: 2px solid rgb(255, 0, 0);
     border-radius: 8px;
     padding: 5px;
     padding-left: 8px;
@@ -363,4 +405,67 @@ li {
     padding: 5px;
     padding-left: 28px;
     margin: 15px 0;
+}
+
+.upcoming-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    padding: 0 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.upcoming-details {
+    display: flex;
+}
+
+.dash-cal-icon-inverse {
+    margin-top: 25px;
+    margin-right: 20px;
+    /* margin-left: 10px; */
+    display: inline-flex;
+    justify-content: center;
+    background-color: rgb(196, 196, 245);
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.dash-icon-inverse {
+    height: 30px;
+    color: rgb(71, 71, 252);
+    padding-top: 9px;
+}
+
+.event-type, .event-duration, .days {
+    margin: 5px 0;
+    padding-top: 5px;
+}
+
+.event-type {
+    color: black;
+}
+
+.event-info {
+    margin: 5px 0;
+}
+
+.approved {
+    background-color: rgb(175, 240, 175);
+    color: green;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.pending {
+    background-color: #f7f7b1;
+    color: #bf6a20;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.upcoming-leaves {
+    overflow-y: auto;
+    height: 230px;
 }

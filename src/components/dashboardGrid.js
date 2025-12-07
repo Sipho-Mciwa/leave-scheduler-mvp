@@ -1,5 +1,9 @@
 import { Grid, Paper, styled } from "@mui/material";
 import { Calendar, CircleCheckBig, Clock4, TrendingUp } from "lucide-react";
+import { useEffect, useState } from "react";
+import { getRequests } from "../services/api";
+import Event from "./event";
+import { getPendingReqs } from "../utils/Utils";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -25,6 +29,22 @@ const Item2 = styled(Paper)(({ theme }) => ({
 }));
 
 export default function DashboardGrid() {
+    const [requests, setRequests] = useState(null)
+    
+    useEffect(() => {
+        const handleOnLoad = async () => {
+            try {
+                const data = await getRequests();
+                setRequests(data);
+            } catch (error) {
+                console.error(error.message);
+            }
+        };
+
+        handleOnLoad();
+    }, []);
+
+    console.log(requests);
     return(
         <>
             <Grid container spacing={3}>
@@ -43,7 +63,7 @@ export default function DashboardGrid() {
                             <Clock4 className='dash-icon'/>
                         </div>
                         <p>Pending Requests</p>
-                        <p><span style={{fontWeight: 'bold', color: 'black'}}>18</span> Days</p>
+                        <p><span style={{fontWeight: 'bold', color: 'black'}}>{requests && getPendingReqs(requests)}</span> requests</p>
                     </Item>
                 </Grid>
                 <Grid size={3}>
@@ -71,7 +91,11 @@ export default function DashboardGrid() {
                 <Grid size={6}>
                     <Item2>
                         <p style={{color: 'black'}}>Upcoming Leave</p>
-
+                        <div className="upcoming-leaves">
+                            {requests && requests.map((request) => {
+                                return <Event request={request}/>
+                            })}
+                        </div>
                         <button className="view-requests-btn" type="button">View All Requests</button>
                     </Item2>
                 </Grid>
