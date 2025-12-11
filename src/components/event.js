@@ -3,9 +3,6 @@ import '../assets/global.css';
 import { getDuration, getLeaveType } from "../utils/Utils";
 
 export default function Event({request}) {
-    const isApproved = request.leaveStatus === 'approved';
-    getDuration(request);
-
     return (
         <div className="upcoming-container">
             <div className="upcoming-details">
@@ -19,7 +16,7 @@ export default function Event({request}) {
                 </div>
             </div>
             <div className="status">
-                <p className={isApproved ? "approved" : 'pending'}>{request.leaveStatus}</p>
+                <p className={request.leaveStatus}>{request.leaveStatus}</p>
             </div>
         </div>
     );

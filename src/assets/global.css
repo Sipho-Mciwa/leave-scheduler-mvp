@@ -161,7 +161,6 @@ a {
 .leaveBalanceInfo {
     background-color: white;
     padding: 10px 25px 25px 25px;
-    
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -256,14 +255,6 @@ a {
     width: 78%;
     margin-right: 15px;
 }
-
-/* .error-submitBtn {
-    background-color: #a196f1;
-    color: white;
-    width: 78%;
-    margin-right: 15px;
-    cursor: not-allowed;
-} */
 
 .submitBtn:hover {
     background-color: #6d5bf7;
@@ -423,7 +414,6 @@ li {
 .dash-cal-icon-inverse {
     margin-top: 25px;
     margin-right: 20px;
-    /* margin-left: 10px; */
     display: inline-flex;
     justify-content: center;
     background-color: rgb(196, 196, 245);
@@ -465,7 +455,411 @@ li {
     border-radius: 5px;
 }
 
+.rejected {
+    background-color: #f7b1b1;
+    color: #ff0000;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 .upcoming-leaves {
     overflow-y: auto;
     height: 230px;
+    padding-right: 10px;
+}
+
+.searchBar {
+    background-color: whitesmoke;
+    padding: 1px 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-search {
+    width: 87%;
+    height: 25px;
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    /* padding-right: 28px; */
+    margin: 15px 0;
+}
+
+.filter-btn {
+    background-color: white;
+    width: 10%;
+    height: 38px;
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    /* padding-right: 28px; */
+    margin: 15px 0;
+}
+
+.detailed-requests-container {
+    margin-top: 40px;
+}
+
+.detailed-upcoming-container {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 0;
+    font-family: sans-serif;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.detailed-upcoming-icon {
+    margin-top: 25px;
+    margin-left: 5px; 
+    display: inline-flex;
+    justify-content: center;
+    background-color: rgb(196, 196, 245);
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.upcoming-details-full {
+    display: flex;
+}
+
+.more-details {
+    display: flex;
+}
+
+.submitted {
+    margin-right: 200px;
+}
+
+.comment-section {
+    background-color: rgb(228, 228, 228);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.title {
+    color: grey;
+}
+
+.approved-2 {
+    background-color: rgb(175, 240, 175);
+    color: green;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 10;
+    font-size: x-small;
+    justify-content: end;
+}
+
+.pending-2 {
+    background-color: #f7f7b1;
+    color: #bf6a20;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 10;
+    font-size: x-small;
+    justify-content: end;
+}
+
+.rejected-2 {
+    background-color: #f7b1b1;
+    color: #ff0000;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 10;
+    font-size: x-small;
+    justify-content: end;
+}
+
+.event-info {
+    margin: 0;
+    padding-left: 30px;
+}
+
+.upcoming-container-2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detailed-requests-container {
+    overflow-y: auto;
+    height: 487px;
+    padding-right: 10px;
+}
+
+/* Styling the entire scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+}
+
+/* Styling the scrollbar track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Styling the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #3F51B5;
+  border-radius: 10px;
+}
+
+/* Styling the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7686e2;
+}
+
+.cancel-btn-2 {
+    color: red;
+    border: none;
+    font-size: small;
+    margin: 0;
+    height: 25px;
+    background-color: whitesmoke;
+}
+
+.cancel-btn-2:hover {
+    cursor: pointer;
+}
+
+.cancel-btn-container {
+    border-radius: 5px;
+    height: 20px;
+    padding: 10px;
+}
+
+.detail-cancel-container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+
+.dash-icon-inverse-approved {
+    height: 30px;
+    color: green;
+    padding-top: 9px;
+}
+
+.dash-icon-inverse-pending {
+    height: 30px;
+    color: #bf6a20;
+    padding-top: 9px;
+}
+
+.dash-icon-inverse-rejected {
+    height: 30px;
+    color: red;
+    padding-top: 9px;
+}
+
+.nav {
+    font-family: sans-serif;
+    color: grey;
+    text-align: start;
+    font-size: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 13px 13px;
+  color: #212529;
+  margin-right: 5px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.req-count {
+    background-color: rgb(224, 224, 224);
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.more-details-container {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: sans-serif;
+}
+
+
+.more-details-2 {
+    background-color: white;
+    padding: 10px 20px;
+    height: 70px;
+    width: 26%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px; 
+}
+
+.grid-container {
+    padding-right: 20px;
+
+}
+
+.avatarIcon-2 {
+    margin-right: 20px;
+}
+
+.userAvatar-2 {
+    display: flex;
+    text-align: start;
+    padding: 10px;
+}
+
+.user-info {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.userDetails-2 p {
+    margin: 0;
+}
+
+.user-name {
+    font-size: 20px;
+    color: black;
+}
+
+.user-dept {
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+.leave-info {
+    border-bottom: 1px solid rgb(228, 228, 228);
+    display: flex;
+}
+
+.leave-type {
+    color: black;
+}
+
+.leave-info-detail {
+    padding: 0px 15px 15px 15px;
+}
+
+.leave-type, .leave-duration, .leave-in-days {
+    margin: 0;
+    font-size: 16px;
+}
+
+.item-card {
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+
+.review-btn-container {
+    background-color: white;
+    width: 100%;
+    padding: 0px 16px;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.review-btn {
+    background-color: #533df6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.review-btn:hover {
+    cursor: pointer;
+    background-color: #6d5bf7;
+}
+
+.comment-textarea {
+    width: 96%;
+    height: 70px;
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 8px;
+    margin: 10px 0;
+    font-family: sans-serif;
+    resize: none;
+}
+
+.review-requests-btns-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+
+.review-requests-btn-approve {
+    width: 50%;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    height: 35px;
+    padding: 5px;
+    margin: 0px 5px 0px 0px;
+}
+
+.review-requests-btn-approve:hover {
+    cursor: pointer;
+    background-color: rgb(0, 161, 0)
+}
+
+.review-requests-btn-reject {
+    width: 50%;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    height: 35px;
+    padding: 5px;
+    margin: 0px 0px 0px 5px;
+}
+
+.review-requests-btn-reject:hover {
+    cursor: pointer;
+    background-color: rgb(248, 80, 80);
+}
+
+.review-requests-btn-cancel {
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    height: 35px;
+    padding: 5px;
+    margin: 0px 0px 0px 5px;
+}
+
+.review-requests-btn-cancel:hover {
+    cursor: pointer;
+    background-color: rgb(236, 236, 236);
+}
+
+.approver-comment-section {
+    display: flex;
+    margin: 0px;
+}
+
+.msg-icon {
+    padding: 10px 5px 0px 0px;
+}
+
+.comment-label {
+    padding: 14px 0px;
 }

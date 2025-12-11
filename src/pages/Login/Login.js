@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../../assets/global.css'
 import { Calendar, Lock, Mail } from "lucide-react";
 import { login } from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Login({setSubmitted, setUser}) {
@@ -11,6 +12,7 @@ export default function Login({setSubmitted, setUser}) {
         password: ''
     });
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
 
 
     const handleInputChange = (event) => {
@@ -58,6 +60,7 @@ export default function Login({setSubmitted, setUser}) {
         } else {
             // Form is not valid, display error messages.
         }
+        navigate("/dashboard")
     };
 
     const isFormValid = Object.keys(errors).length === 0;

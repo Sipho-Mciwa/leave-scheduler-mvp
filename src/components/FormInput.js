@@ -2,11 +2,12 @@ import { useState } from "react";
 import { makeRequest } from "../services/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function FormInput() {
-
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         leaveType: '',
         startDate: '',
@@ -60,6 +61,7 @@ export default function FormInput() {
     };
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         if (validateForm()) {
             //Form is valid, you can submit or process data her
@@ -68,18 +70,24 @@ export default function FormInput() {
 
             if (message.status === 201) {
                 showSuccessToastMessage(message.data.message);
+                navigate("/dashboard");
+            } else {
+                console.log(message);
             }
             setDisableBtn(true);
         } else {
             // Form is not valid, display error messages.
         }
+
     };
 
     const isFormValid = Object.keys(errors).length === 0;
 
     const showSuccessToastMessage = (msg) => {
         toast.success(msg, {
-        position: "top-right"
+            position: "top-right",
+            autoClose: 1000,
+            progress: false
         });
     };
 

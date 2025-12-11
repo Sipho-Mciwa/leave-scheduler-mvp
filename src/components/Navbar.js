@@ -120,12 +120,12 @@ export default function Navbar({children, user}) {
                 <Box>
                   <DrawerHeader>
                     {open ?(<>
-                              <Typography variant='h6' noWrap component='div'>
-                                  Leave Scheduler
-                              </Typography>
-                              <IconButton onClick={handleDrawerClose} color='inherit'>
-                                  {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                              </IconButton>
+                            <Typography variant='h6' noWrap component='div'>
+                                Leave Scheduler
+                            </Typography>
+                            <IconButton onClick={handleDrawerClose} color='inherit'>
+                                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                            </IconButton>
                         </>): <IconButton color='inherit' aria-label='open drawer' onClick={handleDrawerOpen} edge='start' sx={[
                         {
                           marginRight: 1,
@@ -136,23 +136,22 @@ export default function Navbar({children, user}) {
                     </IconButton>}
                   </DrawerHeader>
                   <Divider />
-                  <Buttons open={open}/>
+                  <Buttons open={open} user={user}/>
                 </Box>
                 <Box>
-                    <Divider />
-                    <div className='drawerFooter'>
-                        <div className='userAvatar'>
-                            <Avatar className='avatarIcon'/>
-                            <div className='userDetails'>
-                                <Typography variant='h6'>{user.name}<br/><span className='role'>{user.role}</span></Typography>
-                            </div>
-                        </div>
-                        <div className='logout'>
-                            <IconButton color='inherit' sx={[{marginRight: 1,}]}><LogOut /></IconButton>
-                            <p>Logout</p>
-                        </div>
-                    </div>
-                    
+                  <Divider />
+                  <div className='drawerFooter'>
+                      <div className='userAvatar'>
+                          <Avatar className='avatarIcon'/>
+                          <div className='userDetails'>
+                              <Typography variant='h6'>{user.name}<br/><span className='role'>{user.role}</span></Typography>
+                          </div>
+                      </div>
+                      <div className='logout'>
+                          <IconButton color='inherit' sx={[{marginRight: 1,}]}><LogOut /></IconButton>
+                          <p>Logout</p>
+                      </div>
+                  </div>
                 </Box>
             </Box>
         </Drawer>

@@ -1,9 +1,10 @@
-import { Grid, Paper, styled } from "@mui/material";
+import { Grid, Paper, styled, Typography } from "@mui/material";
 import { Calendar, CircleCheckBig, Clock4, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getRequests } from "../services/api";
 import Event from "./event";
 import { getPendingReqs } from "../utils/Utils";
+import { useNavigate } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -28,8 +29,22 @@ const Item2 = styled(Paper)(({ theme }) => ({
   height: '350px',
 }));
 
+const Item3 = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  padding: '5px 20px 5px 20px',
+  textAlign: 'center',
+  color: (theme.vars ?? theme).palette.text.secondary,
+  ...theme.applyStyles('dark', {
+    backgroundColor: '#1A2027',
+  }),
+  borderRadius: '10px',
+  height: '350px',
+}));
+
 export default function DashboardGrid() {
-    const [requests, setRequests] = useState(null)
+    const [requests, setRequests] = useState(null);
+    const navigate = useNavigate();
     
     useEffect(() => {
         const handleOnLoad = async () => {
@@ -40,11 +55,9 @@ export default function DashboardGrid() {
                 console.error(error.message);
             }
         };
-
         handleOnLoad();
     }, []);
 
-    console.log(requests);
     return(
         <>
             <Grid container spacing={3}>
@@ -63,7 +76,7 @@ export default function DashboardGrid() {
                             <Clock4 className='dash-icon'/>
                         </div>
                         <p>Pending Requests</p>
-                        <p><span style={{fontWeight: 'bold', color: 'black'}}>{requests && getPendingReqs(requests)}</span> requests</p>
+                        <p><span style={{fontWeight: 'bold', color: 'black'}}>{requests ? getPendingReqs(requests) : '0'}</span> requests</p>
                     </Item>
                 </Grid>
                 <Grid size={3}>
@@ -89,20 +102,26 @@ export default function DashboardGrid() {
             <Grid container spacing={3} style={{paddingTop: '25px'}}>
                 {/* lower grid */}
                 <Grid size={6}>
-                    <Item2>
+                    {requests ? (<Item2>
                         <p style={{color: 'black'}}>Upcoming Leave</p>
                         <div className="upcoming-leaves">
                             {requests && requests.map((request) => {
                                 return <Event request={request}/>
                             })}
                         </div>
-                        <button className="view-requests-btn" type="button">View All Requests</button>
-                    </Item2>
+                        <button className="view-requests-btn" type="button" onClick={() =>  navigate("/my-requests")}>View All Requests</button>
+                    </Item2>) : 
+                    <Item3>
+                        <Typography variant="h4" sx={{marginTop: '35%', color: 'grey'}}>No Leaves To Display</Typography>
+                    </Item3>}
                 </Grid>
                 <Grid size={6}>
-                    <Item2>
+                    {/* {requests ? (<Item2>
                         <p style={{color: 'black'}}>Recent Activity</p>
-                    </Item2>
+                    </Item2>) :  */}
+                    <Item3>
+                        <Typography variant="h4" sx={{marginTop: '35%', color: 'grey'}}>No Recent Activity</Typography>
+                    </Item3>
                 </Grid>
             </Grid>
         </>

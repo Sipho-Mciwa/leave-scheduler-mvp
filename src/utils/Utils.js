@@ -25,6 +25,17 @@ export function getLeaveType(request) {
     }
 }
 
+export function getDurationFull(request) {
+    const startDate = moment(request.startDate);
+    const endDate = moment(request.endDate);
+    const monthNames = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    return (`${monthNames[startDate.month()]} ${startDate.date()}, ${startDate.year()} - ${monthNames[endDate.month()]} ${endDate.date()}, ${startDate.year()} (${request.days} days)`);
+}
+
 export function getDuration(request) {
     const startDate = moment(request.startDate);
     const endDate = moment(request.endDate);
@@ -36,10 +47,37 @@ export function getDuration(request) {
     return (`${monthNames[startDate.month()]} ${startDate.date()} - ${monthNames[endDate.month()]} ${endDate.date()}`);
 }
 
+export function getSubmittedDate(request) {
+    const startDate = moment(request.createdAt);
+
+    const monthNames = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    return (`${monthNames[startDate.month()]} ${startDate.date()}, ${startDate.year()}`);
+}
+
 export function getPendingReqs(requests) {
     let pending = 0;
     requests.forEach(request => {
         if (request.leaveStatus === 'pending') pending++;
     });
     return (pending);
+}
+
+export function getRejectedReqs(requests) {
+    let rejected = 0;
+    requests.forEach(request => {
+        if (request.leaveStatus === 'rejected') rejected++;
+    });
+    return (rejected);
+}
+
+export function getApprovedReqs(requests) {
+    let approved = 0;
+    requests.forEach(request => {
+        if (request.leaveStatus === 'approved') approved++;
+    });
+    return (approved);
 }

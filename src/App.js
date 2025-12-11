@@ -9,9 +9,10 @@ function App() {
   const [user, setUser] = useState(null);
   return (
     <BrowserRouter>
-      {submitted ? <Navbar user={user}> 
+      {submitted ? 
+      <Navbar user={user}> 
         <AppRouters submitted={submitted} user={user}/> 
-        </Navbar> 
+      </Navbar> 
       : <Login setSubmitted={setSubmitted} setUser={setUser}/>}
     </BrowserRouter>
   );

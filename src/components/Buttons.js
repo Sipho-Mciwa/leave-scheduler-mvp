@@ -4,7 +4,7 @@ import '../assets/global.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export default function Buttons({open}) {
+export default function Buttons({open, user}) {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const handleListItemClick = (event, index) => {
@@ -63,16 +63,18 @@ export default function Buttons({open}) {
             </Link>
 
 
+           {(user.role !== 'employee' ) &&  
             <Link to={"/pending-requests"} className="linkBtn">
-                <ListItem key={'Manager Pending'} disablePadding sx={{ display: 'block' }}>
-                    <ListItemButton selected={selectedIndex === 3} onClick={(e) => handleListItemClick(e, 3)} sx={[ { minHeight: 48, px: 2.5, }, open ? { justifyContent: 'initial',} : {justifyContent: 'center',}, listItemBtnStyles]} >
-                        <ListItemIcon sx={[{ minWidth: 0, justifyContent: 'center', }, open ? { mr: 3,} : { mr: 'auto', },]} >
-                        <SquareCheckBig color="white"/> 
-                        </ListItemIcon>
-                        <ListItemText primary={'Manager Pending'} sx={[ open ? { opacity: 1, } : { opacity: 0,},]} />
-                    </ListItemButton>
-                </ListItem>
-            </Link>
+                    <ListItem key={'Manager Pending'} disablePadding sx={{ display: 'block' }}>
+                        <ListItemButton selected={selectedIndex === 3} onClick={(e) => handleListItemClick(e, 3)} sx={[ { minHeight: 48, px: 2.5, }, open ? { justifyContent: 'initial',} : {justifyContent: 'center',}, listItemBtnStyles]} >
+                            <ListItemIcon sx={[{ minWidth: 0, justifyContent: 'center', }, open ? { mr: 3,} : { mr: 'auto', },]} >
+                            <SquareCheckBig color="white"/> 
+                            </ListItemIcon>
+                            <ListItemText primary={'Manage Pending'} sx={[ open ? { opacity: 1, } : { opacity: 0,},]} />
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
+            }
 
 
             <Link to={"/calendar"} className="linkBtn">
@@ -82,17 +84,6 @@ export default function Buttons({open}) {
                         <CalendarDays color="white"/> 
                         </ListItemIcon>
                         <ListItemText primary={'Calendar'} sx={[ open ? { opacity: 1, } : { opacity: 0,},]} />
-                    </ListItemButton>
-                </ListItem>
-            </Link>
-
-            <Link to={"/admin-policy"} className="linkBtn">
-                <ListItem key={'Admin Policy'} disablePadding sx={{ display: 'block' }}>
-                    <ListItemButton selected={selectedIndex === 5} onClick={(e) => handleListItemClick(e, 5)} sx={[ { minHeight: 48, px: 2.5, }, open ? { justifyContent: 'initial',} : {justifyContent: 'center',}, listItemBtnStyles]} >
-                        <ListItemIcon sx={[{ minWidth: 0, justifyContent: 'center', }, open ? { mr: 3,} : { mr: 'auto', },]} >
-                        <Settings color="white"/> 
-                        </ListItemIcon>
-                        <ListItemText primary={'Admin Policy'} sx={[ open ? { opacity: 1, } : { opacity: 0,},]} />
                     </ListItemButton>
                 </ListItem>
             </Link>
