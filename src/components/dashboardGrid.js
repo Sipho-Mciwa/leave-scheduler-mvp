@@ -102,11 +102,11 @@ export default function DashboardGrid() {
             <Grid container spacing={3} style={{paddingTop: '25px'}}>
                 {/* lower grid */}
                 <Grid size={6}>
-                    {requests ? (<Item2>
+                    {(requests && requests.length > 0) ? (<Item2>
                         <p style={{color: 'black'}}>Upcoming Leave</p>
                         <div className="upcoming-leaves">
                             {requests && requests.map((request) => {
-                                return <Event request={request}/>
+                                return <Event request={request} key={request._id}/>
                             })}
                         </div>
                         <button className="view-requests-btn" type="button" onClick={() =>  navigate("/my-requests")}>View All Requests</button>

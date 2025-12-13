@@ -1,5 +1,0 @@
-import { Typography } from "@mui/material";
-
-export default function EditLeavePolicies() {
-    return (<><Typography variant="h1">Apply Leave</Typography></>);
-}

@@ -6,6 +6,7 @@ import MuiDrawer from '@mui/material/Drawer';
 import { ChevronLeftIcon, ChevronRightIcon, LogOut,  MenuIcon } from 'lucide-react';
 import Buttons from './Buttons';
 import '../assets/global.css';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -88,17 +89,24 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Navbar({children, user}) {
+export default function Navbar({children, user, setSubmitted}) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+     const navigate = useNavigate();
 
     const handleDrawerOpen = () => {
-        setOpen(true);
+      setOpen(true);
     };
 
     const handleDrawerClose = () => {
-        setOpen(false);
+      setOpen(false);
     };
+
+    const handleLogOut = () => {
+      localStorage.clear();
+      navigate("");
+      setSubmitted(false);
+    }
 
     return (
       <Box sx={{ display: 'flex' }}>
@@ -142,13 +150,13 @@ export default function Navbar({children, user}) {
                   <Divider />
                   <div className='drawerFooter'>
                       <div className='userAvatar'>
-                          <Avatar className='avatarIcon'/>
+                          <Avatar className='avatarIcon' />
                           <div className='userDetails'>
                               <Typography variant='h6'>{user.name}<br/><span className='role'>{user.role}</span></Typography>
                           </div>
                       </div>
                       <div className='logout'>
-                          <IconButton color='inherit' sx={[{marginRight: 1,}]}><LogOut /></IconButton>
+                          <IconButton color='inherit' sx={[{marginRight: 1,}]}><LogOut onClick={handleLogOut}/></IconButton>
                           <p>Logout</p>
                       </div>
                   </div>

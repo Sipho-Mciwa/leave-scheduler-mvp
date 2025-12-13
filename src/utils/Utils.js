@@ -81,3 +81,24 @@ export function getApprovedReqs(requests) {
     });
     return (approved);
 }
+
+export function populateCalendar(requests) {
+    const allEvents = [];
+    if (requests) {
+        requests.forEach((request) => {
+            if (request.leaveStatus === 'approved')
+                allEvents.push({title: request.employeeId.name, start: request.startDate, end: request.endDate, color: getEventColor(request.leaveType)})
+        })
+    }
+
+    return (allEvents);
+}
+
+function getEventColor(leave) {
+    if (leave === 'sick')
+        return ('red');
+    else if (leave === 'personal')
+        return ('purple');
+    else
+        return
+}

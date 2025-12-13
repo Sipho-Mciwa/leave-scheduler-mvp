@@ -52,7 +52,7 @@ export default function PendingRequests() {
                 {requests && requests.map((request) => {
                     return (
                         <Grid size={6}>
-                            <RequestCard request={request}/>
+                            <RequestCard request={request} key={request._id}/>
                         </Grid>
                     )
                 })}

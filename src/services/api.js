@@ -52,7 +52,7 @@ export const  makeRequest = async (userData) => {
         'startDate': userData.startDate,
         'endDate': userData.endDate,
         'reason': userData.reason,
-        'doc': null
+        'doc': userData.doc
     }
    
 
@@ -90,7 +90,7 @@ export const getRequests = async () => {
 
     try {
         const response = await axios.get(`${baseURL}/leave-request/leave`, {headers});
-        if (response.data.message) return null;
+        if (response.data.message || !response.data) return null;
 
         return (response.data);
     } catch (error) {

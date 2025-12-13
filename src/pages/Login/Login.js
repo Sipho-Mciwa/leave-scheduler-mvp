@@ -5,7 +5,7 @@ import { login } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 
 
-export default function Login({setSubmitted, setUser}) {
+export default function Login({setSubmitted, setUser, isPageRefreshed}) {
     
     const [formData, setFormData] = useState({
         email: '',
@@ -47,10 +47,7 @@ export default function Login({setSubmitted, setUser}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateForm()) {
-            //Form is valid, you can submit or process data her
-            // console.log("Form data:", formData);
             const userInfo = await login(formData);
-            // console.log(userInfo);
             setUser(userInfo.user);
 
             if (localStorage.getItem('token')) localStorage.clear();

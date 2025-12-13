@@ -91,12 +91,22 @@ export default function FormInput() {
         });
     };
 
+    const handleFileChange = (event) => {
+    // Access the selected file from the event target
+    const file = event.target.files[0];
+    setFormData({
+        ...formData,
+        "doc": file
+    });
+    // setUploadStatus('');
+  };
+
     return (
     <div className="formContainer">
         <form>
             <label>Leave Type*</label>
             <select className={isFormValid ? "leave-type-dropdown" : "error-leave-type-dropdown"} name="leaveType" value={formData.leaveType} onChange={handleInputChange}>
-                <option value="" disabled selected hidden>Select leave type</option>
+                <option value="" disabled defaultValue={"Select leave type"} hidden>Select leave type</option>
                 <option value="vacation">Vacation</option>
                 <option value="sick">Sick</option>
                 <option value="personal">Personal</option>
@@ -119,7 +129,7 @@ export default function FormInput() {
             {!isFormValid && <p className='errorMsg'>{errors.reason}</p>}
 
             <label>Attach Supporting Document (Optional)</label>
-            <input type="file" placeholder="Provide a brief reason for your leave..." className="supporting-doc"></input>
+            <input type="file" placeholder="Provide a brief reason for your leave..." className="supporting-doc" name="doc" onChange={handleFileChange}></input>
 
             <ToastContainer />
 
